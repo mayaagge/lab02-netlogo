@@ -100,7 +100,14 @@ end
 ; above or below a diagonal going from
 ; the bottom-left to top-right corner of the world.
 to slant
-
+  wiggle
+  ifelse xcor > ycor
+  [
+    set color pink
+  ]
+  [
+    set color magenta
+  ]
 end
 
 ;=========================================
@@ -111,7 +118,20 @@ end
 ; in the world. Use the sample program linked
 ; above to see this pattern.
 to diagonal
-
+  wiggle
+  ifelse xcor > 0 and ycor > 0 and xcor > ycor
+  [
+    set color pink
+  ]
+  [
+    ifelse xcor < 0 and ycor < 0 and ycor > xcor
+    [
+      set color pink
+    ]
+    [
+      set color magenta
+    ]
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -142,10 +162,10 @@ ticks
 30.0
 
 BUTTON
-54
-58
-117
+28
+261
 91
+294
 NIL
 pd
 NIL
@@ -159,10 +179,10 @@ NIL
 1
 
 BUTTON
-58
-114
-121
-147
+103
+261
+166
+294
 NIL
 pu
 NIL
@@ -176,10 +196,10 @@ NIL
 1
 
 BUTTON
-74
-172
-176
-205
+37
+57
+139
+90
 NIL
 setupRow
 NIL
@@ -193,10 +213,10 @@ NIL
 1
 
 BUTTON
-20
-232
-106
-265
+44
+101
+130
+134
 NIL
 stamp4
 NIL
@@ -210,25 +230,25 @@ NIL
 1
 
 SLIDER
-3
-298
-175
-331
+4
+151
+176
+184
 numTurtles
 numTurtles
 1
 100
-43.0
+1.0
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-33
-360
-205
-393
+22
+326
+194
+359
 stepSize
 stepSize
 0
@@ -240,10 +260,10 @@ NIL
 HORIZONTAL
 
 BUTTON
-81
-431
-144
-464
+61
+387
+124
+420
 NIL
 trap
 T
@@ -257,16 +277,50 @@ NIL
 1
 
 BUTTON
-147
-234
-220
-267
+47
+203
+120
+236
 NIL
 setup
 NIL
 1
 T
 OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+61
+436
+124
+469
+NIL
+slant
+T
+1
+T
+TURTLE
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+53
+481
+138
+514
+NIL
+diagonal
+T
+1
+T
+TURTLE
 NIL
 NIL
 NIL
@@ -615,7 +669,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.2.0
+NetLogo 6.4.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
